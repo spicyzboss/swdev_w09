@@ -12,7 +12,7 @@ pipeline {
 
     stage('Restart Compose') {
       steps {
-        sh 'docker-compose up --pull always'
+        sh 'docker-compose up --pull always --force-recreate -d'
       }
     }
   }
