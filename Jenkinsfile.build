@@ -1,0 +1,26 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Build Docker Images') {
+      steps {
+        dir('swdev_w09') {
+          sh 'docker-compose build'
+        }
+      }
+    }
+
+    stage('Push to Docker Hub') {
+      steps {
+        sh 'docker push spicyzboss/swdev-w9-frontend'
+        sh 'docker push spicyzboss/swdev-w9-backend'
+      }
+    }
+  }
+
+  post {
+    success {
+      build job: 'deploy'
+    }
+  }
+}

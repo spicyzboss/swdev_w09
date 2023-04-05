@@ -1,0 +1,19 @@
+pipeline {
+  agent any
+
+  stages {
+    stage('Stop Running Compose') {
+      steps {
+        dir('swdev_w09') {
+          sh 'docker-compose down -v'
+        }
+      }
+    }
+
+    stage('Restart Compose') {
+      steps {
+        sh 'docker-compose up --pull always'
+      }
+    }
+  }
+}

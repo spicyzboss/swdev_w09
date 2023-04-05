@@ -5,12 +5,15 @@ services:
     build:
       context: "backend"
       dockerfile: "Dockerfile"
+    image: spicyzboss/swdev-w9-backend
     ports:
       - 8080:8080
+
   frontend:
     build:
       context: "frontend"
       dockerfile: "Dockerfile"
+    image: spicyzboss/swdev-w9-frontend
     ports:
       - 80:5173
 
