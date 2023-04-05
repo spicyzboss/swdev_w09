@@ -13,7 +13,7 @@ export default component$(() => {
   });
 
   const submitProcess = $(async () => {
-    const request = await fetch(`http://18.181.169.203:8080/process-image`, {
+    const request = await fetch(`http://18.181.169.203:8000/process-image`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
