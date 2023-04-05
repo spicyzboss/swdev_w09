@@ -13,7 +13,7 @@ pipeline {
     stage('Restart Compose') {
       steps {
         dir('swdev_w09') {
-          sh 'docker-compose up --pull always --force-recreate -d'
+          sh 'docker-compose up --quiet-pull --force-recreate -d'
         }
       }
     }
