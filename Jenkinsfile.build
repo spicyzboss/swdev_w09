@@ -12,6 +12,9 @@ pipeline {
 
     stage('Push to Docker Hub') {
       steps {
+        withCredentials([usernamePassword(credentialsId: 'dockerhub', passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
+          sh 'docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD'
+        }
         sh 'docker push spicyzboss/swdev-w9-frontend'
         sh 'docker push spicyzboss/swdev-w9-backend'
       }
